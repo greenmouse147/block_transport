@@ -1,6 +1,7 @@
 # block_transport
 
-![texte alternatif][/Docs/img/schema.png]
+![alt text]("/Docs/img/schema.png" "Transactions")
+
 
 | Type de trame      |    Objectif   |
 | ------------- |: -------------: |
