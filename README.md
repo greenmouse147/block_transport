@@ -1,6 +1,6 @@
 # block_transport
 
-![Trames(Docs\img\schema.png "Trames")
+![texte alternatif][/Docs/img/schema.png]
 
 | Type de trame      |    Objectif   |
 | ------------- |: -------------: |
