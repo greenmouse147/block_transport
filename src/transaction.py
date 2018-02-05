@@ -20,7 +20,7 @@ class Transaction:
 
 	"""
 
-	def __init__(self, publicKey, util, reputation, event, code,  privateKey, ):
+	def __init__(self, entityPublicKey, userpublicKey, reputation, event, code,  userPrivateKey, ):
 
 		codeTypes = {
 					1 : 'Alerte',
@@ -45,22 +45,21 @@ class Transaction:
 
 		#Detection type de trame
 		self.transactionType = codeTypes[event]
+		
+		
+		
 		if self.transactionType == 4
 			new_user = user()
+			self.userPublicKey == user.publicKey
+			self.userPrivateKey == user.privKeyKey
+			self.reputation == user.reputation
 			
-			self.util == None
-			self.reputation = 5
-			self.event = None
-			
-		else :
-			self.util = util
-			self.reputation = reputation
-			self.code = code 
+			if event != None : 
+				print("erreur, trame non valide")
 		
-
-
-		self.publicKey = publicKey		
-		self.privateKey = privateKey
+		
+		#self.publicKey = publicKey		
+		#self.privateKey = privateKey
 		
 		self.codeType = eventTypes[code]
 		self.time = strftime("%d %b %Y %H:%M:%S +0000", gmtime())
