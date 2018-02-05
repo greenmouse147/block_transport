@@ -107,13 +107,22 @@ class Transaction:
 		
 		
 		#self.codeType = eventTypes[code]
-		#self.time = strftime("%d %b %Y %H:%M:%S +0000", gmtime())
-		#self.hashClearMsg = hashlib.sha256(clearMsg.encode('utf-8')).hexdigest()
-		#self.hashEncMsg = hashlib.sha256(EncMsg.encode('utf-8')).hexdigest()
+		self.time = strftime("%d %b %Y %H:%M:%S +0000", gmtime())
+
 		self.gps = None 
+		
+		
 
 if __name__ == '__main__':
 
 	#a = Transaction(clearMsg="This is a test", EncMsg="sqdknqsdoqsd", event=1, code=1)
 	#print(a.time)
 	print("ok")
+	
+	
+	
+	
+	
+	
+		self.hashClearMsg = hashlib.sha256(.encode('utf-8')).hexdigest()
+		#self.hashEncMsg = hashlib.sha256(EncMsg.encode('utf-8')).hexdigest()

@@ -15,9 +15,7 @@ class User:
 	def encryptData(self, data):
 		return
 
-	def createNewWallet():
-		"""Create a wallet and save it in a local db file"""
-
+	
 
 
 if __name__ == '__main__':
