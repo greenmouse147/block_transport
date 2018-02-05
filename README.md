@@ -5,9 +5,9 @@ Ce dépôt présente une implémentation de la blockchain dédié à la notifica
 ### Transaction déclaration d'un incident
 ![alt text](/Docs/img/Incidents.png "Incident")
 ### Transaction création d'un utilisateur
-![alt text](/Docs/img/CreationUtilisateur.png "Création Nouvel Utilisateur")
+![alt text](/Docs/img/CreationUtilisateurs.png "Création Nouvel Utilisateur")
 ### Transaction ajout de réputation à l'utilisateur ATTENTION CHANGER Private -> public
-![alt text](/Docs/img/AjoutDeReptutation.png "Ajout de reputation")
+![alt text](/Docs/img/AjoutDeReputation.png "Ajout de reputation")
 
 # Composition d'un Block
 Un Block est composé d'un ensemble de transactions. (entre 3 et 5 à définir)
