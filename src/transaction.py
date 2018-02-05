@@ -104,10 +104,12 @@ class Transaction:
 		else :
 			print("TC non suporté")  
 			return None 
-		self.codeType = eventTypes[code]
-		self.time = strftime("%d %b %Y %H:%M:%S +0000", gmtime())
-		self.hashClearMsg = hashlib.sha256(clearMsg.encode('utf-8')).hexdigest()
-		self.hashEncMsg = hashlib.sha256(EncMsg.encode('utf-8')).hexdigest()
+		
+		
+		#self.codeType = eventTypes[code]
+		#self.time = strftime("%d %b %Y %H:%M:%S +0000", gmtime())
+		#self.hashClearMsg = hashlib.sha256(clearMsg.encode('utf-8')).hexdigest()
+		#self.hashEncMsg = hashlib.sha256(EncMsg.encode('utf-8')).hexdigest()
 		self.gps = None 
 
 if __name__ == '__main__':
