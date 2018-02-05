@@ -46,8 +46,7 @@ class Transaction:
 		#Detection type de trame
 		self.transactionType = codeTypes[event]
 		
-		
-		
+		#création util TT = 4
 		if self.transactionType == 4
 			new_user = user()
 			self.userPublicKey == user.publicKey
