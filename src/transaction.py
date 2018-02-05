@@ -12,7 +12,7 @@ class CodeType(Exception):
 
 class Transaction:
 
-	def __init__(self, clearMsg, event, code):
+	def __init__(self, clearMsg, EncMsg, event, code):
 
 		eventTypes = {
 					1 : 'Alerte',
@@ -36,9 +36,11 @@ class Transaction:
 		self.codeType = codeTypes[code]
 		self.time = strftime("%d %b %Y %H:%M:%S +0000", gmtime())
 		self.hashClearMsg = hashlib.sha256(clearMsg.encode('utf-8')).hexdigest()
+		self.hashEncMsg = hashlib.sha256(EncMsg.encode('utf-8')).hexdigest()
 		self.gps = None 
 
 if __name__ == '__main__':
 
-	a = Transaction(clearMsg="This is a test", event=0, code=1)
+	a = Transaction(clearMsg="This is a test", EncMsg="sqdknqsdoqsd", event=1, code=1)
 	print(a.time)
+
