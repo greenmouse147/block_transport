@@ -1,7 +1,13 @@
 # block_transport
-
+# Introduction
+Ce dépôt présente une implémentation de la blochain dédié à la notification d'incident.
 ## Composition des Transactions
-![alt text](/Docs/img/schema.png "Transactions")
+### Transaction déclaration d'un incident
+![alt text](/Docs/img/Incident.png "Incident")
+### Transaction création d'un utilisateur
+![alt text](/Docs/img/CreationUtilisateurs.png "Création Nouvel Utilisateur")
+### Transaction ajout de réputation à l'utilisateur
+![alt text](/Docs/img/AjoutDeReptutation.png "Ajout de reputation")
 
 ### Définition du type de transaction
 
