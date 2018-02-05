@@ -1,6 +1,6 @@
 # block_transport
 # Introduction
-Ce dépôt présente une implémentation de la blochain dédié à la notification d'incident.
+Ce dépôt présente une implémentation de la blockchain dédié à la notification d'incident.
 ## Composition des Transactions
 ### Transaction déclaration d'un incident
 ![alt text](/Docs/img/Incident.png "Incident")
@@ -9,12 +9,19 @@ Ce dépôt présente une implémentation de la blochain dédié à la notificati
 ### Transaction ajout de réputation à l'utilisateur
 ![alt text](/Docs/img/AjoutDeReptutation.png "Ajout de reputation")
 
+# Composition d'un Block
+Un Block est composé d'un ensemble de transactions. (entre 3 et 5 à définir)
+
+![alt text](/Docs/img/block.png "Block")
+
+![alt text](/Docs/img/connexionBlocks.png "Block_Chain")
+
 ### Définition du type de transaction
 
 | Valeur | Objectif |
 | --- | --- |
 | TT = 1 | Alerte |
-| TT = 2 | Ajout de Réponses |
+| TT = 2 | Ajout de Réputation |
 | TT = 3 | Retrait de réputation |
 | TT = 4 | Création Utilisateur |
 | TT = 5 | Création Entreprise |
