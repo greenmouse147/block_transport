@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 
 from Crypto.PublicKey import RSA
+from database import transportDB
 
-wallet_prefix = "user"
 
 class User:
 
@@ -16,10 +16,16 @@ class User:
 	def encryptData(self, data):
 		return
 
-#9b4def4337de386a795e0c1ea0f90d7583261db2
+	def createUser(self):
+		db = transportDB()
+		db.execQuery("wallet.db",'INSERT INTO wallets (privateKey, publicKey, reputation) VALUES ("9b4def4337de386a795e0c1ea0f90d7583261db2", "9b4def4337de386a795e0c1ea0f90d7583261db2", 5')
+
+#
+
 
 
 if __name__ == '__main__':
 	a = User()
+	a.createUser()
 	print(a.publicKey)
 	print(a.privKey)

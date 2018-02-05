@@ -2,11 +2,10 @@
 
 from block import Block
 from transaction import Transaction
-from database import transportDB
+
 
 #commands = {"q": "quit", "h" : "help", "t":"transaction"}
 
-db = database.transportDB()
 
 
 if __name__ == '__main__':
