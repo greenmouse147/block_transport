@@ -1,6 +1,7 @@
-#!/usr/bin/env python3 
+#!/usr/bin/env python3
 
 from Crypto.PublicKey import RSA
+
 
 class User:
 
@@ -12,11 +13,14 @@ class User:
 
 
 	def encryptData(self, data):
-		return 
+		return
+
+	def createNewWallet():
+		"""Create a wallet and save it in a local db file"""
+
 
 
 if __name__ == '__main__':
 	a = User()
 	print(a.publicKey)
 	print(a.privKey)
-
