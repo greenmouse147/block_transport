@@ -2,6 +2,7 @@
 
 from Crypto.PublicKey import RSA
 
+wallet_prefix = "user"
 
 class User:
 
@@ -15,8 +16,6 @@ class User:
 	def encryptData(self, data):
 		return
 
-	def createNewWallet():
-		"""Create a wallet and save it in a local db file"""
 
 
 
