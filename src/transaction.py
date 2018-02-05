@@ -12,7 +12,15 @@ class CodeType(Exception):
 
 class Transaction:
 
-	def __init__(self, clearMsg, EncMsg, event, code):
+	"""
+
+		Transaction associated to the blockchain 
+
+		cf : https://github.com/greenmouse147/block_transport 
+
+	"""
+
+	def __init__(self, publicKey, clearMsg, EncMsg, event, code):
 
 		eventTypes = {
 					1 : 'Alerte',
@@ -32,6 +40,7 @@ class Transaction:
 			raise EventType("Out of range event type (1-5), you specified {:d}".format(event))
 		if code < 1 or code > 5:
 			raise CodeType("Out of range code type (1-5), you specified {:d}".format(code))
+		self.publicKey = publicKey
 		self.transactionType = eventTypes[event]
 		self.codeType = codeTypes[code]
 		self.time = strftime("%d %b %Y %H:%M:%S +0000", gmtime())
