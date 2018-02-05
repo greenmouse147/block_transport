@@ -3,7 +3,7 @@
 Ce dépôt présente une implémentation de la blockchain dédié à la notification d'incident.
 ## Composition des Transactions
 ### Transaction déclaration d'un incident
-![alt text](/Docs/img/Incident.png "Incident")
+![alt text](/Docs/img/Incidents.png "Incident")
 ### Transaction création d'un utilisateur
 ![alt text](/Docs/img/CreationUtilisateur.png "Création Nouvel Utilisateur")
 ### Transaction ajout de réputation à l'utilisateur
