@@ -20,7 +20,7 @@ class Transaction:
 
 	"""
 
-	def __init__(self, entityPublicKey, userpublicKey, reputation, event, code,  userPrivateKey, ):
+	def __init__(self, entityPublicKey, userpublicKey, reputation, event, code,  position, userPrivateKey, ):
 
 		codeTypes = {
 					1 : 'Alerte',
@@ -44,10 +44,43 @@ class Transaction:
 		
 
 		#Detection type de trame
-		self.transactionType = codeTypes[event]
+		#self.transactionType = codeTypes[event]
+		self.transactionType = code
+		
+		#Déclaration Incident
+		#il faut encore verifier 
+			#public key 
+			#la reputation
+		if self.transactionType == 1 : 
+			
+			self.entityPublicKey = entityPublicKey
+			self.userPublicKey = userPublicKey
+			self.reputation = reputation
+			self.eventType = event
+			self.position = position
+			
+		## coté validateur, ces trames devront être refusés si elle proviennent d'un client
+		elif self.transactionType == 2 : 
+			self.entityPublicKey = entityPublicKey
+			self.userPublicKey = userPublicKey
+			self.reputation = reputation + 1
+			
+		
+			if event != None : 
+				print("erreur, trame non valide")
+				return None
+		
+		elif self.transactionType == 3 : 
+			self.entityPublicKey = entityPublicKey
+			self.userPublicKey = userPublicKey
+			self.reputation = reputation - 1 		
+		
+			if event != None : 
+				print("erreur, trame non valide")
+				return None
 		
 		#création util TT = 4
-		if self.transactionType == 4
+		elif self.transactionType == 4 :
 			new_user = user()
 			self.userPublicKey == user.publicKey
 			self.userPrivateKey == user.privKeyKey
@@ -55,11 +88,22 @@ class Transaction:
 			
 			if event != None : 
 				print("erreur, trame non valide")
+				return None
 		
 		
-		#self.publicKey = publicKey		
-		#self.privateKey = privateKey
+		#Creation Entreprise
+		elif self.transactionType == 5 :
+			new_user = enterprise()
+			self.enterprisePublicKey == user.publicKey
+			self.enterprisePrivateKey == user.privKeyKey
+
+			if event != None : 
+				print("erreur, trame non valide")
+				return None
 		
+		else :
+			print("TC non suporté")  
+			return None 
 		self.codeType = eventTypes[code]
 		self.time = strftime("%d %b %Y %H:%M:%S +0000", gmtime())
 		self.hashClearMsg = hashlib.sha256(clearMsg.encode('utf-8')).hexdigest()
@@ -68,5 +112,6 @@ class Transaction:
 
 if __name__ == '__main__':
 
-	a = Transaction(clearMsg="This is a test", EncMsg="sqdknqsdoqsd", event=1, code=1)
-	print(a.time)
+	#a = Transaction(clearMsg="This is a test", EncMsg="sqdknqsdoqsd", event=1, code=1)
+	#print(a.time)
+	print("ok")
