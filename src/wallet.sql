@@ -5,3 +5,4 @@ CREATE TABLE `wallets` (
 	`publicKey`	TEXT,
 	`address`	TEXT
 );
+COMMIT;

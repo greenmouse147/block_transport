@@ -1,25 +1,24 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python3 
 
 from Crypto.PublicKey import RSA
 
-wallet_prefix = "user"
-
-class User:
+class Enterprise:
 
 	def __init__(self):
 		self.key = RSA.generate(4096)
 		self.publicKey = self.key.publickey().exportKey()
 		self.privKey = self.key.exportKey()
-		self.reputation = 5
 
 
 	def encryptData(self, data):
-		return
+		return ""
 
-#9b4def4337de386a795e0c1ea0f90d7583261db2
+	def decryptData(self, data):
+		return ""
 
 
 if __name__ == '__main__':
 	a = User()
 	print(a.publicKey)
 	print(a.privKey)
+

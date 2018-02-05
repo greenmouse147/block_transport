@@ -21,9 +21,9 @@ class transportDB():
 
     res = ""
     if result == "all":
-        res = transport.db.cursor.fetchall()
+        res = main.db.cursor.fetchall()
     if result == "one":
-        res = transport.db.cursor.fetchone()
+        res = main.db.cursor.fetchone()
 
     self.connexion.commit()
     self.connexion.close()
