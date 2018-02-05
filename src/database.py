@@ -1,43 +1,40 @@
 import sqlite3
 
-#TRANSPORT_BLOCKCHAIN_DB_FILE = "transport.db"
-#TRANSPORT_DB_TEMPLATE = "transport.sql"
+DB_FILE = 'wallet.db'
 
-class transportDB():
-  """ Classe permettant la gestion de la base de donnée """
-  def __init__(self, bddFile, bddTemplate):
-      self.bddFile = bddFile
-      self.bddTemplate = bddTemplate
 
-  def execQuery(self, query, args = False, result = "all")
-    self.connexion = sqlite3.connect(self.dbFile)
-    #like sql3 documentation https://docs.python.org/2/library/sqlite3.html
-    self.cursor = self.connexion.cursor()
+class TransportBlockBD(object):
+    """ database class """
+    def __init__(self, dbFile = DB_FILE):
+        self.dbFile = dbFile
 
-    if args :
-        self.cursor.execute(query, args)
-    else:
-        self.cursor.execute(query)
+    def execQuery(self, query, args = False):
 
-    res = ""
-    if result == "all":
-        res = main.db.cursor.fetchall()
-    if result == "one":
-        res = main.db.cursor.fetchone()
+        self.connexion = sqlite3.connect(self.dbFile)
+        self.cursor = self.connexion.cursor()
 
-    self.connexion.commit()
-    self.connexion.close()
+        #check https://docs.python.org/2/library/sqlite3.html
+        if args:
+            self.cursor.execute(query)
+        else:
+            self.cursor.execute(query)
 
-    return res
+        self.connexion.commit()
+        self.connexion.close()
 
-    def initDB():
-        """ Classe permettant d'initiliser la base de donnée à partir du
-         fichier template
-         Permet aussi de créer un wallet
-         """
-         sql = open(self.bddTemplate, 'r').read()
-         tmpConnexion = sqlite3.connect(self.dbFile)
-         tmpCursor = tmpConnexion.cursor()
-         tmpCursor.executescript(sql)
-         tmpConnexion.commit()
-         tmpConnexion.close()
+        return res
+
+
+    def createDB(self, inputDBTemplate , outputDBFile):
+        outputDBFile = str(outputDBFile) + ".db"
+        # maak db met genesis transaction en wallet
+        sql = open(inputDBTemplate,'r').read()
+        tmpConn = sqlite3.connect(outputDBFile)
+        tmpCursor = tmpConn.cursor()
+        tmpCursor.executescript(sql)
+        tmpConn.commit()
+        tmpConn.close()
+
+if __name__ == '__main__':
+     c = TransportBlockBD()
+     c.createDB("block.sql","block")

@@ -13,10 +13,10 @@ CREATE TABLE "transactions" (
   `timestamp`	      TEXT,
   `gps`	            TEXT,
   `hash`	          TEXT,
-  `transactionHash`	TEXT,
+  `transactionHash`	TEXT
 );
 
 CREATE TABLE `confirmations` (
-	`hash`	TEXT,
+	`hash`	TEXT
 );
 COMMIT;
