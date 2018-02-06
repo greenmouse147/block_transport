@@ -1,6 +1,10 @@
 #!/usr/bin/env python3
 
 from Crypto.PublicKey import RSA
+from database import transportDB
+
+WALLET_DB_FILE = "wallet.db"
+WALLET_TEMPLATE_FILE = "wallet.sql"
 
 class Enterprise:
 
@@ -8,7 +12,8 @@ class Enterprise:
 		self.key = RSA.generate(4096)
 		self.publicKey = self.key.publickey().exportKey()
 		self.privKey = self.key.exportKey()
-
+		self.reputation = 0
+		self.db = transportDB()
 
 	def encryptData(self, data):
 		return ""
