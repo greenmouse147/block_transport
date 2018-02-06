@@ -11,16 +11,14 @@ class transportDB(object):
 
             #check https://docs.python.org/2/library/sqlite3.html
             if args:
-                self.cursor.execute(query)
+                self.cursor.execute(query, args)
             else:
                 self.cursor.execute(query)
-                self.connexion.commit()
-                self.connexion.close()
-        return res
+            self.connexion.commit()
+            self.connexion.close()
 
 
     def createDB(self, inputDBTemplate , outputDBFile):
-        outputDBFile = str(outputDBFile) + ".db"
         # maak db met genesis transaction en wallet
         with open(inputDBTemplate,"r") as f:
             sql = f.read()

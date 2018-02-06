@@ -6,7 +6,7 @@ Ce dépôt présente une implémentation de la blockchain dédié à la notifica
 ![alt text](/Docs/img/Incidents.png "Incident")
 ### Transaction création d'un utilisateur
 ![alt text](/Docs/img/CreationUtilisateurs.png "Création Nouvel Utilisateur")
-### Transaction ajout de réputation à l'utilisateur ATTENTION CHANGER Private -> public
+### Transaction ajout de réputation à l'utilisateur
 ![alt text](/Docs/img/AjoutDeReputation.png "Ajout de reputation")
 
 # Composition d'un Block
