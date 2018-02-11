@@ -26,7 +26,7 @@ Un Block est composé d'un ensemble de transactions. (entre 3 et 5 à définir)
 | TT = 4 | Création Utilisateur |
 | TT = 5 | Création Entreprise |
 
-### Définition des type de code qui permettent d'identifié le type d'événement
+### Définition des type de code qui permettent d'identifier le type d'événement
 
 > Codes :<br/>
 1 Accident<br/>
