@@ -5,9 +5,6 @@
 This simple Python program implements a gossip network protocol. It is
 intended only for fun and learning.
 
-Written and directed by Stephane Bortzmeyer
-<bortz@users.sourceforge.net> Licence as liberal as you want but no
-warranty.
 
 Gossip protocols are network protocols where each machine, each
 *peer*, does not have a complete list of all peers. Instead, it knows
@@ -39,7 +36,7 @@ Peers remember the messages they have seen (in the global history) and
 the messages they sent to each peer (in a per-peer history).
 
 To use it, see the output of the -h option.
- 
+
 """
 
 import socket
@@ -63,7 +60,7 @@ DEFAULT_MAX_DISPLAY = 40
 
 def current_time():
     return time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(time.time()))
-  
+
 def log(msg, peer=None, size=None):
     if peer is None:
         peer_str = ""
@@ -83,16 +80,16 @@ def usage(msg=None):
         sys.stderr.write("%s\n" % msg)
 
 def help(short=True):
-    sys.stdout.write("""To use this program, there is one mandatory option, 
+    sys.stdout.write("""To use this program, there is one mandatory option,
 -i (or --id) to set the ID of this instance. It must be unique among the swarm.
 
 There is one mandatory argument (at least one must be given), the peer information.
-Each peer is to be entered as n,X[:Y] where n is the ID of the peer, X, its IP 
-address and Y the facultative port. If X is an IPv6 address, it must be entered 
+Each peer is to be entered as n,X[:Y] where n is the ID of the peer, X, its IP
+address and Y the facultative port. If X is an IPv6 address, it must be entered
 between brackets. If the port is ommitted, it defaults to %i.
 
-Three examples of legal peer information are 33,[2001:db8:1::dead:babe] (peer 
-ID 33, IPv6 address, default port), 629,192.0.2.1:8080 (peer ID 629, IPv4 address, 
+Three examples of legal peer information are 33,[2001:db8:1::dead:babe] (peer
+ID 33, IPv6 address, default port), 629,192.0.2.1:8080 (peer ID 629, IPv4 address,
 port 8080) and 9231,[2001:DB8:99::bad:dcaf]:40000 (peer ID 9231, IPv6 address, port
 40000).
 
@@ -113,8 +110,8 @@ def long_help():
    * -h or --help: get help
    * -p N or --port=N: sets the listening port
    * -i N or --id=N: sets the ID of this instance
-   * -d N or --delay=N: sets the artifical delay we use before connecting 
-                        to a peer (to makes things more realistic). The default 
+   * -d N or --delay=N: sets the artifical delay we use before connecting
+                        to a peer (to makes things more realistic). The default
                         is %i seconds.
    * -r N or -- retry=N: sets the delay we wait when a connection fails, before
                          retrying. the default is %i seconds.
@@ -123,7 +120,7 @@ def long_help():
 \n""" % (DEFAULT_SIMULATION_DELAY, DEFAULT_RETRY_DELAY, DEFAULT_TIMESTAMP_DELAY))
 
 class Entity:
-    """ Models a peer on the network """    
+    """ Models a peer on the network """
     def __init__(self, family, address, port, id):
         self.family = family
         # TODO: allows a list of (address, port), not just one
@@ -163,9 +160,9 @@ def parse(str):
             raise InvalidAddress
         except ValueError:
             raise InvalidPort
-        return Entity(socket.AF_INET6, 
-                      address, 
-                      port, 
+        return Entity(socket.AF_INET6,
+                      address,
+                      port,
                       id)
     else:
         if loc.find(':') >= 0:
@@ -180,17 +177,17 @@ def parse(str):
             raise InvalidAddress
         except ValueError:
             raise InvalidPort
-        return Entity(socket.AF_INET, 
-                      address, 
-                      port, 
+        return Entity(socket.AF_INET,
+                      address,
+                      port,
                       id)
 
 def pretty(server):
     if server.family == socket.AF_INET6:
-        return ("[%s]:%i" % (server.address, 
+        return ("[%s]:%i" % (server.address,
                              server.port))
     elif server.family == socket.AF_INET:
-        return ("%s:%i" % (server.address, 
+        return ("%s:%i" % (server.address,
                            server.port))
     else:
         return ("Unknown address family %i" % server.family)
@@ -249,7 +246,7 @@ class Sender(threading.Thread):
                         break
                 self.s.close()
                 time.sleep(generator.randint(self.retry_delay/2,self.retry_delay))
-       
+
 class RequestHandler(SocketServer.StreamRequestHandler):
 
     def handle(self):
@@ -269,21 +266,21 @@ class RequestHandler(SocketServer.StreamRequestHandler):
             if message not in self.server.history:
                 self.server.history[message] = True
                 log("NEW message received from peer %i: \"%s...\"" % \
-                        (peer_id, message[:DEFAULT_MAX_DISPLAY]), 
+                        (peer_id, message[:DEFAULT_MAX_DISPLAY]),
                     self.client_address, size)
                 for mysender in mysenders.keys():
                     if mysender != peer_id:
-                        mysenders[mysender].channel.put((self.server.id, 
+                        mysenders[mysender].channel.put((self.server.id,
                                                          peer_id, message))
             else:
                 log("Ignoring known message from peer %i: \"%s...\"" % \
-                        (peer_id, message[:DEFAULT_MAX_DISPLAY]), 
+                        (peer_id, message[:DEFAULT_MAX_DISPLAY]),
                     self.client_address, size)
         except ValueError: # Not a well-formatted message
             log("Ignoring badly formatted message \"%s...\"" % \
                     message[:DEFAULT_MAX_DISPLAY], self.client_address, size)
 # TODO: two servers, for IPv4 and IPv6?
-class Server(SocketServer.ThreadingMixIn, SocketServer.TCPServer): 
+class Server(SocketServer.ThreadingMixIn, SocketServer.TCPServer):
 
     def __init__(self, address, handler, id, num):
         self.id = id
@@ -295,7 +292,7 @@ class Server(SocketServer.ThreadingMixIn, SocketServer.TCPServer):
 class Watcher:
     """
     http://code.activestate.com/recipes/496735/
-    
+
     This class solves two problems with multithreaded
     programs in Python, (1) a signal might be delivered
     to any thread (which is just a malfeature) and (2) if
@@ -310,7 +307,7 @@ class Watcher:
     I have only tested this on Linux.  I would expect it to
     work on the Macintosh and not work on Windows.
     """
-    
+
     def __init__(self):
         """ Creates a child thread, which returns.  The parent
             thread waits for a KeyboardInterrupt and then kills
@@ -335,7 +332,7 @@ class Watcher:
             os.kill(self.child, signal.SIGKILL)
         except OSError: pass
 
-port = DEFAULT_PORT   
+port = DEFAULT_PORT
 myid = None
 timestamp_delay = DEFAULT_TIMESTAMP_DELAY
 simulation_delay = DEFAULT_SIMULATION_DELAY
