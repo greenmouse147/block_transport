@@ -1,24 +1,22 @@
 BEGIN TRANSACTION;
 CREATE TABLE `previous_hash` (
-	`id`	INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE,
 	`hash`	TEXT
 );
 
 CREATE TABLE `transactions` (
-  `id`	INTEGER NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
+  `id`	INTEGER PRIMARY KEY AUTO_INCREMENT,
   `address_entity`	TEXT,
   `address_user`	  TEXT,
   `reputation`   INTEGER,
   `tt`	         INTEGER,
   `event_code`	 INTEGER,
-  `timestamp`	      TEXT,
+  `timestamp`	      TIMESTAMP NOT NULL,
   `gps`	            TEXT,
   `hash`	          TEXT,
   `transactionHash`	TEXT
 );
 
 CREATE TABLE `hash_current_block` (
-	`id`	INTEGER NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
 	`hash`	TEXT
 );
 COMMIT;
